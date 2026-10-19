@@ -1,0 +1,21 @@
+# Virtual environment — never commit this; it's OS-specific and reproducible
+.venv/
+
+# Environment variables — contains real API keys, must NEVER be committed
+.env
+
+# Python bytecode cache — generated automatically, not source code
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Pytest cache — temporary test metadata
+.pytest_cache/
+
+# macOS metadata
+.DS_Store
+
+# IDE files (optional but recommended)
+.idea/
+.vscode/
