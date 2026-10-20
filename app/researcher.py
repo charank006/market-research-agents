@@ -14,8 +14,8 @@ DESIGN INTENT
   In a completed implementation the Researcher will:
     1. Accept a research topic (e.g. a company name or investment question).
     2. Use web_search() from tools.py to retrieve up-to-date information.
-    3. Send the raw search results to an LLM (via OpenRouter) to produce a
-       structured summary.
+    3. Send the raw search results to a Gemini model (via google-genai SDK)
+       to produce a structured summary.
     4. Return a validated ResearchResult object.
 
   The agent will be orchestrated by LangGraph in a later milestone.
@@ -28,18 +28,18 @@ from app.schemas import ResearchResult
 
 class Researcher:
     """
-    Orchestrates web search and LLM summarisation for a given research topic.
+    Orchestrates web search and Gemini LLM summarisation for a given research topic.
 
     Parameters
     ----------
     model : str
-        The LLM identifier to use via OpenRouter, e.g.
-        "openai/gpt-4o-mini" or "anthropic/claude-3-haiku".
+        The Gemini model identifier, e.g. "gemini-1.5-flash" or "gemini-1.5-pro".
+        Full list: https://ai.google.dev/gemini-api/docs/models/gemini
     max_search_results : int
         How many Tavily results to pass to the LLM per search (default 5).
     """
 
-    def __init__(self, model: str = "openai/gpt-4o-mini", max_search_results: int = 5) -> None:
+    def __init__(self, model: str = "gemini-1.5-flash", max_search_results: int = 5) -> None:
         self.model = model
         self.max_search_results = max_search_results
 
@@ -68,6 +68,6 @@ class Researcher:
         # ------------------------------------------------------------------ #
         raise NotImplementedError(
             f"Researcher.research() is not yet implemented.  "
-            f"LLM + Tavily integration will be added in the next milestone.  "
+            f"Gemini + Tavily integration will be added in the next milestone.  "
             f"(Topic received: {topic!r})"
         )

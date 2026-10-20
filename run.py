@@ -15,7 +15,7 @@ What this does (currently)
   - Does NOT make any live API calls at this stage.
 
 Next steps
-  When Tavily and OpenRouter integration is authorised, this file will
+  When Tavily and Gemini integration is authorised, this file will
   instantiate a Researcher and call researcher.research(topic).
 """
 
@@ -43,9 +43,9 @@ def main() -> None:
         os.getenv("TAVILY_API_KEY") and
         os.getenv("TAVILY_API_KEY") != "your_tavily_key_here"
     )
-    openrouter_configured = bool(
-        os.getenv("OPENROUTER_API_KEY") and
-        os.getenv("OPENROUTER_API_KEY") != "your_openrouter_key_here"
+    gemini_configured = bool(
+        os.getenv("GEMINI_API_KEY") and
+        os.getenv("GEMINI_API_KEY") != "your_gemini_key_here"
     )
 
     print("=" * 60)
@@ -53,11 +53,11 @@ def main() -> None:
     print("=" * 60)
     print(f"  Research topic  : {topic}")
     print(f"  Tavily key      : {'✓ configured' if tavily_configured else '✗ placeholder — update .env'}")
-    print(f"  OpenRouter key  : {'✓ configured' if openrouter_configured else '✗ placeholder — update .env'}")
+    print(f"  Gemini key      : {'✓ configured' if gemini_configured else '✗ placeholder — update .env'}")
     print("-" * 60)
     print("  Status: Environment loaded.  No API calls made yet.")
-    print("  Next step: Add your API keys to .env and authorise")
-    print("             the Tavily + OpenRouter milestone.")
+    print("  Next step: Authorise the Tavily + Gemini milestone")
+    print("             to begin live research.")
     print("=" * 60)
 
 
